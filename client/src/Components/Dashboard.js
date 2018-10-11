@@ -83,9 +83,9 @@ class Dashboard extends Component {
     })
       .then(resp => resp.json())
       .then(_ => {
-        // if (this.state.address) {
-        this.getGeocode(this.state.address);
-        // }
+        if (this.state.address) {
+          this.getGeo();
+        }
         this.getLatest();
       });
   };
@@ -125,7 +125,9 @@ class Dashboard extends Component {
 
   getGeo = () => {
     fetch(
-      "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyA5-V3BEWeNq_lasnMAL8Bip0_bbvSr03U"
+      `https://maps.googleapis.com/maps/api/geocode/json?address= + ${
+        this.state.address
+      } + &key=AIzaSyA5-V3BEWeNq_lasnMAL8Bip0_bbvSr03U`
     )
       .then(resp => resp.json())
       .then(data => {
@@ -202,7 +204,7 @@ class Dashboard extends Component {
             </Marker>
             <Marker position={positionOnMap2}>
               <Popup>
-                Coordinates: [{this.state.latitude},{this.state.longitude}]
+                Coordinates: [{this.state.lat2},{this.state.long2}]
               </Popup>
             </Marker>
           </Map>
