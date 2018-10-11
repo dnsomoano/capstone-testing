@@ -1,32 +1,134 @@
+/* Font-pairing */
+/* font-family: "Merriweather", serif; */
+/* font-family: "Merriweather", sans; */
+
+/* Color Schema */
+/* #272932 */
+/* #dde2c6 */
+/* #4d7ea8 */
+/* #1d5d90 */
+/* #e8e8e8 */
+/* #bfbfbf */
+
 .App {
+  font-family: "Merriweather", serif;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
+/* * {
+  background-color: #3E6680;
+} */
+/* .App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #272932;
+  height: 55px;
+  padding: 10px;
+  color: #e8e8e8;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.App-title {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+/* Body of Page */
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #e8e8e8;
+  align-items: center;
+  padding-bottom: 2em;
+  /* max-height: 700px;
+  max-width: 414px; */
+}
+
+.main-menu {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* flex-shrink: 1; */
 }
 
-.App-link {
-  color: #61dafb;
+.main-menu ul {
+  margin: 0em;
+  margin-right: 1.2em;
+  padding: 0em;
 }
 
+.main-menu li {
+  list-style: none;
+}
+
+.menu-button {
+  background-color: #4d7ea8;
+  /* border: 2px dotted pink; */
+  color: #e8e8e8;
+  padding: 1em;
+  height: 4.6em;
+  width: 8em;
+}
+
+/* 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */
+
+/*  */
+/* Start Component */
+
+/* footer special */
+
+.footer-container {
+  background-color: #4d7ea8;
+  padding-top: 3em;
+  padding-bottom: 6em;
+}
+
+/* Mobile Devices */
+@media (max-device-width: 414px) and (min-device-width: 415px) {
+  .body {
+    display: flex;
+    flex-direction: row;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 20em;
+  }
+
+  .menu-button {
+    background-color: #3e6680;
+    color: #e8e8e8;
+    padding: 0.2em;
+    height: 4em;
+    width: 5em;
   }
 }
+
+/* Tablets, iPads, and Kindles */
+/* @media (max-device-width: 1024px) and (min-device-width: 415px) {
+} */
+
+/* Large Monitors */
+/* @media (min-device-width: 1025px) {
+} */

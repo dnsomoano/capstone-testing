@@ -1,0 +1,36 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-button {
+  background-color: #1d5d90;
+  border-radius: 0.6em;
+  color: #e8e8e8;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 10em;
+  padding: 1em 2.2em 1em 2.2em;
+}
+
+.start-button:hover {
+  background-color: #4d7ea8;
+}
+
+.register-link {
+  text-decoration: highlight;
+}
+
+/* Mobile Devices */
+/* @media (max-device-width: 414px) and (min-device-width: 320px) {
+} */
+
+/* Tablets, iPads, and Kindles */
+/* @media (max-device-width: 1024px) and (min-device-width: 415px) {
+} */
+
+/* Large Monitors */
+/* @media (max-device-width: 1600px) and (min-device-width: 1025px) {
+} */

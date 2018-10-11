@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../Stylings/Dashboard.css";
 import { Link } from "react-router-dom";
-// import { Geocoder, Providers } from "node-geocoder";
+// import { geocoder, geocode } from "geocoder";
+// import NodeGeocoder from "node-geocoder";
 import {
   // FeatureGroup,
   Map,
@@ -30,10 +31,11 @@ class Dashboard extends Component {
       longitude: -82.452606, // with these coordinates
       name: "",
       address: "",
+      // newPosition: {
+      lat2: 0,
+      long2: 0
+      // }
       // isFinished: false,
-      authed: {
-        isLoggedIn: false
-      }
       // options: {
       //   Providers: "openstreetmaps",
       //   httpAdapter: "https",
@@ -41,7 +43,7 @@ class Dashboard extends Component {
       // }
     };
     this.handleChange = this.handleChange.bind(this);
-    this.getLocation(null); // initiate GPS position call
+    // this.getLocation(null); // initiate GPS position call
   }
 
   componentDidMount() {
@@ -65,24 +67,25 @@ class Dashboard extends Component {
       });
   };
 
+  // Post request
   handleSubmit = e => {
     e.preventDefault();
-    fetch(`${process.env.REACT_APP_API}/api/events`, {
+    fetch("https://localhost:5001/api/events", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
-        // mode: "no-cors"
+        "Content-Type": "application/json",
+        mode: "no-cors"
       },
       body: JSON.stringify({
         EventName: this.state.name,
-        EventAddress: this.state.address,
-        Latitude: this.state.latitude,
-        Longitude: this.state.longitude
+        EventAddress: this.state.address
       })
     })
       .then(resp => resp.json())
       .then(_ => {
-        console.log(this.state.name);
+        // if (this.state.address) {
+        this.getGeocode(this.state.address);
+        // }
         this.getLatest();
       });
   };
@@ -109,11 +112,43 @@ class Dashboard extends Component {
     });
   };
 
+  //   getGeocode = location => {
+  //     let options = {
+  //       provider: "openstreetmap"
+  //     };
+  //     let geocoder = NodeGeocoder(options);
+  //     geocoder.geocode(location, function(err, res) {
+  //       console.log(res);
+  //       console.log(typeof res);
+  //     });
+  //   };
+
+  getGeo = () => {
+    fetch(
+      "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyA5-V3BEWeNq_lasnMAL8Bip0_bbvSr03U"
+    )
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data.results[0].geometry.location);
+        console.log(data.results[0].geometry.location.lat);
+        console.log(typeof data.results[0].geometry.location);
+        this.setState({
+          // newPosition: {
+          lat2: data.results[0].geometry.location.lat,
+          long2: data.results[0].geometry.location.lng
+          // }
+        });
+      });
+  };
+
   render() {
     const positionOnMap = [this.state.latitude, this.state.longitude];
-    //[this.props.coords.latitude, this.props.coords.longitude];
-    // let geocoder = NodeGeocoder(this.state.options);
-    // geocoder.geocode()
+    const positionOnMap2 = [this.state.lat2, this.state.long2];
+    console.log(positionOnMap2);
+    console.log(positionOnMap);
+    // if (!this.state.newPosition) {
+    //   this.setState({});
+    // }
     return (
       <div className="dashboard-body">
         <section>
@@ -124,7 +159,7 @@ class Dashboard extends Component {
                 type="text"
                 name="name"
                 placeholder="name of event"
-                // value={this.state.name}
+                value={this.state.name}
                 onChange={this.handleChange}
               />
             </section>
@@ -134,7 +169,7 @@ class Dashboard extends Component {
                 type="text"
                 name="address"
                 placeholder="location of event"
-                // value={this.state.address}
+                value={this.state.address}
                 onChange={this.handleChange}
               />
             </section>
@@ -154,13 +189,18 @@ class Dashboard extends Component {
             center={positionOnMap}
             zoom={this.state.zoom}
             className="map-styling"
-            onClick={this.getLocation}
+            onClick={this.getGeo}
           >
             <TileLayer
               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={positionOnMap}>
+              <Popup>
+                Coordinates: [{this.state.latitude},{this.state.longitude}]
+              </Popup>
+            </Marker>
+            <Marker position={positionOnMap2}>
               <Popup>
                 Coordinates: [{this.state.latitude},{this.state.longitude}]
               </Popup>
@@ -173,7 +213,7 @@ class Dashboard extends Component {
               selected={this.state.startDate}
               onChange={this.handleDateChange}
             />
-            <Link to={`/new_event/${this.state.authed.isLoggedIn}`}>
+            <Link to="/new_event">
               <button className="add-event-button">Add Event</button>
             </Link>
             <section>
