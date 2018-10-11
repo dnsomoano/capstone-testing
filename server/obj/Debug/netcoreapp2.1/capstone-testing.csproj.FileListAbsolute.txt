@@ -1,0 +1,14 @@
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\bin\Debug\netcoreapp2.1\capstone-testing.deps.json
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\bin\Debug\netcoreapp2.1\capstone-testing.runtimeconfig.json
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\bin\Debug\netcoreapp2.1\capstone-testing.runtimeconfig.dev.json
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\bin\Debug\netcoreapp2.1\capstone-testing.dll
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\bin\Debug\netcoreapp2.1\capstone-testing.pdb
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.csprojAssemblyReference.cache
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.csproj.CoreCompileInputs.cache
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.RazorAssemblyInfo.cache
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.RazorAssemblyInfo.cs
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.AssemblyInfoInputs.cache
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.AssemblyInfo.cs
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.RazorTargetAssemblyInfo.cache
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.dll
+C:\Users\Halberd\sdg\unit-3\capstone-testing\server\obj\Debug\netcoreapp2.1\capstone-testing.pdb
