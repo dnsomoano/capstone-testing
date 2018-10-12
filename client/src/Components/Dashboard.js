@@ -55,8 +55,6 @@ class Dashboard extends Component {
     e.preventDefault();
     if (this.state.address) {
       this.getGeo(this.state.address);
-    } else {
-      this.getLocation(); // initiate GPS position call
     }
     fetch("https://localhost:5001/api/events", {
       method: "POST",
@@ -76,6 +74,10 @@ class Dashboard extends Component {
       })
       .then(_ => {
         console.log({ _ });
+        if (!this.state.address) {
+          // if not then must be geolocated
+          this.getLocation(this.state.latitude, this.state.longitude);
+        }
         this.getLatest();
       });
   };
@@ -108,12 +110,10 @@ class Dashboard extends Component {
   };
 
   // gets location based on geolocation
-  getLocation = () => {
+  getLocation = (lat, long) => {
     navigator.geolocation.getCurrentPosition(position => {
-      this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      });
+      lat = position.coords.latitude;
+      long = position.coords.longitude;
     });
   };
 
@@ -147,11 +147,18 @@ class Dashboard extends Component {
     return (
       <div className="dashboard-body">
         {button}
-        <section>
-          {this.state.data.map((event, i) => {
-            return <section key={i}>{event.EventName}</section>;
+        {/* <section>
+          {Object.values(this.state.data).map((event, i) => {
+            return (
+              <section key={i}>
+                <section>{event.EventName}</section>
+                <section>{event.EventAddress}</section>
+                <section>{event.EventLatitude}</section>
+                <section>{event.EventLongitude}</section>
+              </section>
+            );
           })}
-        </section>
+        </section> */}
         <section className="map-container">
           <Map
             center={positionOnMap}
